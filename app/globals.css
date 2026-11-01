@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base body look: white in light mode, deep navy in dark mode */
+body {
+  @apply bg-white text-navy antialiased;
+}
+.dark body,
+html.dark body {
+  @apply bg-[#060f26] text-white;
+}
+
+/* Gold focus ring for accessibility and brand feel */
+:focus-visible {
+  outline: 2px solid #C9A227;
+  outline-offset: 2px;
+}
+
+/* Slider track fill helper: --fill is set inline as a percentage */
+.range-gold {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
+  border-radius: 999px;
+  background: linear-gradient(
+    to right,
+    #C9A227 0%,
+    #C9A227 var(--fill, 0%),
+    #d6dbe6 var(--fill, 0%),
+    #d6dbe6 100%
+  );
+  cursor: pointer;
+}
+.dark .range-gold {
+  background: linear-gradient(
+    to right,
+    #C9A227 0%,
+    #C9A227 var(--fill, 0%),
+    #1f2f55 var(--fill, 0%),
+    #1f2f55 100%
+  );
+}
+.range-gold::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #C9A227;
+  border: 3px solid #fff;
+  box-shadow: 0 2px 6px rgba(11, 31, 75, 0.35);
+  cursor: pointer;
+}
+.range-gold::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #C9A227;
+  border: 3px solid #fff;
+  cursor: pointer;
+}
+
+/* Hide number spinners on the amount inputs for a cleaner look */
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
