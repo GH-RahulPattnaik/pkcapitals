@@ -1,23 +1,15 @@
-/**
- * Central place for business details and loan settings.
- * Change these values once and the whole site updates.
- */
-
 export const SITE = {
   name: 'PK Capital',
   tagline: 'Your Growth Partner',
   url: process.env.NEXT_PUBLIC_SITE_URL || 'https://pkcapital.example.com',
-  // Phone from the poster. Replace if the number changes.
   phoneDisplay: '+91 82491 52952',
   phoneTel: '+918249152952',
-  // WhatsApp uses the number without "+" for wa.me links
   whatsappNumber: '918249152952',
-  // Placeholders: replace before going live
   email: 'info@pkcapital.example.com',
-  address: 'Byasanagar, Jaipur Road, Cuttack, Odisha, India',
+  address: 'Near Natraj Royal Hotel, Bypass Road, Cuttack, Odisha, India',
   hours: 'Mon – Sat: 10:00 AM – 7:00 PM',
   mapsEmbedUrl:
-    'https://www.google.com/maps?q=Byasanagar%20Jaipur%20Road%20Cuttack%20Odisha&output=embed',
+    'https://www.google.com/maps?q=20.953171,86.134235&z=17&output=embed',
 };
 
 export const LOAN_LIMITS = {

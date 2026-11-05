@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from 'next';
-import Script from 'next/script';
 import './globals.css';
 import { SITE } from '@/lib/site';
+import ThemeInit from '@/components/ThemeInit';
 
 const TITLE = 'PK Capital | Vehicle, Home & Business Loans in Odisha';
 const DESCRIPTION =
@@ -57,12 +57,9 @@ const jsonLd = {
   logo: `${SITE.url}/logo.png`,
   telephone: SITE.phoneTel,
   email: SITE.email,
-  address: { '@type': 'PostalAddress', streetAddress: 'Byasanagar, Jaipur Road', addressLocality: 'Cuttack', addressRegion: 'Odisha', addressCountry: 'IN' },
+  address: { '@type': 'PostalAddress', streetAddress: 'Near Natraj Royal Hotel, Bypass Road', addressLocality: 'Cuttack', addressRegion: 'Odisha', addressCountry: 'IN' },
   openingHours: 'Mo-Sa 10:00-19:00',
 };
-
-/** Runs before the page paints so dark mode never flashes. */
-const themeScript = `try{var t=localStorage.getItem('theme');if(t==='dark'||(!t&&matchMedia('(prefers-color-scheme: dark)').matches)){document.documentElement.classList.add('dark')}}catch(e){}`;
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -75,15 +72,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;600;700;800&display=swap"
         />
+        {/* Structured data for search engines (server-rendered, not run on the client) */}
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       </head>
       <body className="font-sans">
-        {/* next/script handles inline scripts correctly in React 19 / Next.js 16 */}
-        <Script id="theme-init" strategy="beforeInteractive">
-          {themeScript}
-        </Script>
-        <Script id="ld-json" type="application/ld+json" strategy="beforeInteractive">
-          {JSON.stringify(jsonLd)}
-        </Script>
+        <ThemeInit />
         {children}
       </body>
     </html>
